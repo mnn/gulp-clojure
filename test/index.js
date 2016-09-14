@@ -29,21 +29,6 @@ describe('gulp-clj', () => {
         .write(createFile(filepath, stream))
     })
 
-		it('should emit an error when passed a non valid Clojure file', done => {
-			let contents = fs.readFileSync(testFilePath)
-			let file = createFile(testFilePath, contents)
-
-			clj()
-        .on('error', err => {
-          err.message.should.equal('Not a valid clojure file! The extension was .txt')
-          done()
-        })
-        .on('data', newFile => {
-					throw new Error('No file should have been emitted!')
-				})
-        .write(file)
-
-		})
 		it('should replace the .clj extension with .js',  done => {
 			let contents = fs.readFileSync(clojureFilePath)
 			let file = createFile(clojureFilePath, contents)

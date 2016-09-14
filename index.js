@@ -19,14 +19,6 @@ function transform (file, enc, callback) {
 		return callback()
 	}
 
-	if (file.extname !== '.clj') {
-		let message = `Not a valid clojure file! The extension was ${file.extname}`
-		let err = new GulpClojureError(message)
-
-		this.emit('error', err)
-		return callback()
-	}
-
 	try {
 		let compiledJS = cljs.compile(file.contents.toString('utf-8'))
 
