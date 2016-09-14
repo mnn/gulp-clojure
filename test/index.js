@@ -10,7 +10,6 @@ const base = './test/fixtures'
 const testFilePath = `${base}/test.txt`
 const clojureFilePath = `${base}/app.clj`
 const compiledJsFixturePath =  `${base}/app.js`
-const compiledJsFixture = fs.readFileSync(compiledJsFixturePath).toString()
 
 
 describe('gulp-clj', () => {
@@ -53,18 +52,6 @@ describe('gulp-clj', () => {
 				.on('error', err => { throw err })
 				.on('data', newFile => {
 					newFile.extname.should.equal('.js')
-					done()
-				})
-				.write(file)
-		})
-		it('should compile Clojure to JavaScript',  done => {
-			let contents = fs.readFileSync(clojureFilePath)
-			let file = createFile(clojureFilePath, contents)
-
-			clj()
-				.on('error', err => { throw err })
-				.on('data', newFile => {
-					newFile.contents.toString().should.equal(compiledJsFixture)
 					done()
 				})
 				.write(file)

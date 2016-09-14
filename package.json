@@ -4,7 +4,7 @@
   "description": "A gulp plugin for compiling ClojureScript to JavaScript.",
   "main": "index.js",
   "dependencies": {
-    "clojurescript": "0.0.1",
+    "clojurescript": "0.0.9",
     "gulp-util": "^3.0.7",
     "object-assign": "^4.0.1",
     "through2": "^2.0.0"
